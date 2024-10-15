@@ -11,6 +11,7 @@ import {
 } from '@gorhom/bottom-sheet'
 import AuthModal from '@/components/AuthModal'
 import { useCallback, useMemo, useRef, useState } from 'react'
+import { useSupabase } from '@/context/supabaseContext'
 
 export default function Index() {
   const { top } = useSafeAreaInsets()
@@ -20,6 +21,8 @@ export default function Index() {
 
   const snapPoints = useMemo(() => ['33%'], [])
   const [authType, setAuthType] = useState<ModalType | null>(null)
+
+  const { getBoards } = useSupabase()
 
   const showModal = async (type: ModalType) => {
     setAuthType(type)
@@ -35,7 +38,6 @@ export default function Index() {
     // Open action sheet with login options
     const options = ['View support docs', 'Contact us', 'Cancel']
     const cancelButtonIndex = 2
-
     showActionSheetWithOptions(
       {
         options,
@@ -47,7 +49,6 @@ export default function Index() {
           case 1:
             // Support
             break
-
           case cancelButtonIndex:
           // Canceled
         }

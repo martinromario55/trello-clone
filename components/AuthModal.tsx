@@ -1,10 +1,9 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
 import { AuthStrategy, ModalType } from '@/types/enums'
-import { BottomSheetView } from '@gorhom/bottom-sheet'
 import { Ionicons } from '@expo/vector-icons'
-import { useOAuth, useSignIn, useSignUp } from '@clerk/clerk-expo'
+import { BottomSheetView } from '@gorhom/bottom-sheet'
+import { Image, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { useWarmUpBrowser } from '@/hooks/useWarmUpBrowser'
+import { useOAuth, useSignIn, useSignUp } from '@clerk/clerk-expo'
 
 const LOGIN_OPTIONS = [
   {
@@ -51,8 +50,6 @@ const AuthModal = ({ authType }: AuthModalProps) => {
   const { signIn } = useSignIn()
 
   const onSelectAuth = async (strategy: AuthStrategy) => {
-    // console.log(strategy)
-    // TODO: Clerk Auth
     if (!signIn || !signUp) return null
 
     const selectedAuth = {
@@ -109,6 +106,7 @@ const AuthModal = ({ authType }: AuthModalProps) => {
       }
     }
   }
+
   return (
     <BottomSheetView style={[styles.modalContainer]}>
       <TouchableOpacity style={styles.modalBtn}>
@@ -130,8 +128,6 @@ const AuthModal = ({ authType }: AuthModalProps) => {
     </BottomSheetView>
   )
 }
-
-export default AuthModal
 
 const styles = StyleSheet.create({
   modalContainer: {
@@ -156,3 +152,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 })
+
+export default AuthModal

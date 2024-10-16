@@ -31,29 +31,29 @@ const tokenCache = {
 }
 
 const InitialLayout = () => {
-  const router = useRouter()
-  const { isLoaded, isSignedIn } = useAuth()
-  const segments = useSegments()
+  // const router = useRouter()
+  // const { isLoaded, isSignedIn } = useAuth()
+  // const segments = useSegments()
 
-  useEffect(() => {
-    if (!isLoaded) return
+  // useEffect(() => {
+  //   if (!isLoaded) return
 
-    const inAuthGroup = segments[0] === '(authenticated)'
+  //   const inAuthGroup = segments[0] === '(authenticated)'
 
-    if (isSignedIn && !inAuthGroup) {
-      router.replace('/(authenticated)/(tabs)/boards')
-    } else if (!SignedIn) {
-      router.replace('/')
-    }
-  }, [isSignedIn])
+  //   if (isSignedIn && !inAuthGroup) {
+  //     router.replace('/(authenticated)/(tabs)/boards')
+  //   } else if (!SignedIn) {
+  //     router.replace('/')
+  //   }
+  // }, [isSignedIn])
 
-  if (!isLoaded) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color={Colors.primary} />
-      </View>
-    )
-  }
+  // if (!isLoaded) {
+  //   return (
+  //     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+  //       <ActivityIndicator size="large" color={Colors.primary} />
+  //     </View>
+  //   )
+  // }
 
   return (
     <SupabaseProvider>

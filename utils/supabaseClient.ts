@@ -12,13 +12,11 @@ declare global {
     }
   }
 }
-
 function createClerkSupabaseClient() {
   return createClient(supabaseUrl, supabaseAnonKey, {
     global: {
       fetch: async (url, options = {}) => {
-        console.log('Supabase client initialized')
-        const clerkToken = await window.Clerk?.session?.getToken({
+        const clerkToken = await window.Clerk.session?.getToken({
           template: 'supabase',
         })
 
